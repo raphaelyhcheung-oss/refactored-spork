@@ -1,7 +1,11 @@
-import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+const pdfjsLib = window.pdfjsLib;
+
+if (!pdfjsLib) {
+  throw new Error("PDF.js failed to load. Check your internet connection or script path.");
+}
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.js";
 
 const STORAGE_KEY = "paper-pdf-manager-items";
 
@@ -111,7 +115,7 @@ const createPaperRecord = async (file) => {
 
 const renderStats = () => {
   elements.stats.textContent = `${state.filtered.length} of ${state.items.length} papers`;
-};
+}
 
 const renderTable = () => {
   elements.papersBody.innerHTML = "";

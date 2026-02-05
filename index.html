@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paper PDF Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div>
+          <h1>Paper PDF Manager</h1>
+          <p>Upload and organize your paper PDFs with thumbnails and metadata.</p>
+        </div>
+        <div class="app__actions">
+          <label class="button">
+            Upload PDFs
+            <input id="file-input" type="file" accept="application/pdf" multiple />
+          </label>
+          <button id="clear-button" class="button button--secondary" type="button">
+            Clear library
+          </button>
+        </div>
+      </header>
+
+      <section class="app__controls">
+        <div class="search">
+          <label for="search-input">Search papers</label>
+          <input id="search-input" type="search" placeholder="Search by title or metadata" />
+        </div>
+        <div class="stats" id="stats"></div>
+      </section>
+
+      <main class="app__content">
+        <table class="papers-table">
+          <thead>
+            <tr>
+              <th>Preview</th>
+              <th>Paper</th>
+              <th>Pages</th>
+              <th>Size</th>
+              <th>Uploaded</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="papers-body">
+            <tr>
+              <td colspan="6" class="empty-state">Upload one or more PDFs to start your paper library.</td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+
+    <template id="paper-row-template">
+      <tr>
+        <td><img class="thumb" alt="PDF first page thumbnail" /></td>
+        <td>
+          <p class="paper-title"></p>
+          <p class="paper-meta"></p>
+        </td>
+        <td class="paper-pages"></td>
+        <td class="paper-size"></td>
+        <td class="paper-uploaded"></td>
+        <td><a class="button button--small" target="_blank" rel="noopener noreferrer">Open PDF</a></td>
+      </tr>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
